@@ -1,63 +1,42 @@
 import React from "react"
 import * as Yup from 'yup'
 
-import { Formik } from "formik"
+import { Formik, Field, Form, ErrorMessage } from "formik"
 
 export const Login = () => {
   return (
     <Formik
-    initialValues={{
-      email: "",
-      name: "",
-      password: "",
-    }}
-    valiationSchema={Yup.object({
-      name: Yup.string().required('Name is required'),
-      email: Yup.string().email('invalid email').required('Email is required'),
-      password: Yup.string().min(6).required('Password is required'),
-    })}
-    onSubmit={(values) => {
-      console.log("submission", values)
-      {/* setSubmitting(false) */}
-    }}
+      initialValues={{
+        email: "",
+        name: "",
+        password: "",
+      }}
+      validationSchema={Yup.object({
+        name: Yup.string().required('Name is required'),
+        email: Yup.string().email('invalid email').required('Email is required'),
+        password: Yup.string().min(6).required('Password is required'),
+      })}
+      onSubmit={(values) => {
+        console.log("submission", values)
+        {/* setSubmitting(false) */ }
+      }}
     >
-    {(formik) => (
-    <form onSubmit={formik.handleSubmit}>
-      <label htmlFor="name">Name</label>
-      <input
-        type="text"
-        id="name"
-        {...formik.getFieldProps('name')}
-      />
-      {formik.touched.name && formik.errors.name ? (
-        <p>{formik.errors.name}</p>
-      ) : null}
 
-      <label htmlFor="email">Email</label>
-      <input
-        type="email"
-        id="email"
-        {...formik.getFieldProps('email')}
-      />
-      {formik.touched.email && formik.errors.email ? (
-        <p>{formik.errors.email}</p>
-      ) : null}
+      <Form>
+        <label htmlFor="name">Name</label>
+        <Field name="name" type="text" />
+        <ErrorMessage name="name" />
 
-      <label htmlFor="password">Password</label>
-      <input
-        type="password"
-        id="pass"
-        {...formik.getFieldProps('password')}
-      />
-      {formik.touched.password && formik.errors.password ? (
-        <p>{formik.errors.password}</p>
-      ) : null}
+        <label htmlFor="email">Email</label>
+        <Field name="email" type="email" />
+        <ErrorMessage name="email" />
 
-      <button type="submit">Submit</button>
-    </form>
-  )}
+        <label htmlFor="password">Password</label>
+        <Field name="password" type="password" />
+        <ErrorMessage name="password" />
+
+        <button type="submit">Submit</button>
+      </Form>
     </Formik>
   )
-
-
 }
