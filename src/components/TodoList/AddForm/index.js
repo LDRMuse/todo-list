@@ -7,14 +7,14 @@ export const AddForm = ({ handler }) => {
       <div className="field">
         <div className="control">
           <input
-            className="input"
+            className="input is-primary"
             type="text"
             placeholder="Enter a new Todo Item"
           />
         </div>
       </div>
 
-      <button className="button is-success">Add It!</button>
+      <button className="button is-primary">Add It!</button>
     </form>
   )
 }

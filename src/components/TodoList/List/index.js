@@ -15,7 +15,7 @@ export const List = ({ todos, checkboxHandler, trashHandler }) => {
   className +=
     completedCount / todosCount < 0.5
       ? " has-text-warning"
-      : " has-text-success"
+      : " has-text-primary"
 
   return (
     <Fragment>
