@@ -17,8 +17,8 @@ export const Login = () => {
   //   ) {
   //     errors.email = "Doesn't look like email"
   //   }
-  //   if (!values.pass) {
-  //     errors.pass = "Password is required!"
+  //   if (!values.password) {
+  //     errors.password = "Password is required!"
   //   }
 
   //   return errors
@@ -48,10 +48,7 @@ export const Login = () => {
       <input
         type="text"
         id="name"
-        name="name"
-        onBlur={formik.handleBlur}
-        onChange={formik.handleChange}
-        value={formik.values.name}
+        {...formik.getFieldProps('name')}
       />
       {formik.touched.name && formik.errors.name ? (
         <p>{formik.errors.name}</p>
@@ -61,10 +58,7 @@ export const Login = () => {
       <input
         type="email"
         id="email"
-        name="email"
-        onBlur={formik.handleBlur}
-        onChange={formik.handleChange}
-        value={formik.values.email}
+        {...formik.getFieldProps('email')}
       />
       {formik.touched.email && formik.errors.email ? (
         <p>{formik.errors.email}</p>
@@ -74,10 +68,7 @@ export const Login = () => {
       <input
         type="password"
         id="pass"
-        name="password"
-        onBlur={formik.handleBlur}
-        onChange={formik.handleChange}
-        value={formik.values.pass}
+        {...formik.getFieldProps('password')}
       />
       {formik.touched.password && formik.errors.password ? (
         <p>{formik.errors.password}</p>
