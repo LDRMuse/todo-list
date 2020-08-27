@@ -2,7 +2,7 @@ import React from "react"
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
-import { TodoList, Home, Login } from "./components"
+import { TodoList, Home, Login, Header } from "./components"
 
 import "./App.scss"
 
@@ -14,6 +14,7 @@ export const App = () => {
       </Route>
       <Switch>
         <Route exact={true} path="/login">
+        <Header />
           <Login />
         </Route>
       </Switch>

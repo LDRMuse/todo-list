@@ -12,6 +12,11 @@
   flex-direction: column;
 }
 
+.hero--home {
+  background: url("https://source.unsplash.com/1600x900/?todo") no-repeat center center fixed;
+  background-size: cover;
+}
+
 // Bulma
 .hero {
   background: url("https://source.unsplash.com/1600x900/?todo") no-repeat center center fixed;

@@ -1,3 +1,3 @@
 export {TodoList} from "./TodoList"
 
-export { Home, Login } from "./views"
+export { Home, Login, Header } from "./views"
