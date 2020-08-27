@@ -9,7 +9,9 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons"
 
-library.add(fab, faGithub, faLinkedin, faTwitter)
+import { faCommentDots } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fab, faGithub, faLinkedin, faTwitter, faCommentDots)
 
 export const Home = () => (
   <>
@@ -45,13 +47,13 @@ export const Home = () => (
       <div className="content has-text-centered">
         <p>
           <strong>Todo List by&nbsp;</strong>
-          <a href="https://codefinity.tech" target="_blank" rel="noopener noreferrer">
-            CodeFinity
+          <a href="#" target="_blank" rel="noopener noreferrer">
+            LDRMuse
           </a>
         </p>
         <div className="level">
           <a
-            href="https://github.com/manavm1990"
+            href="https://github.com/LDRMuse"
             target="_blank"
             rel="noopener noreferrer"
             className="level-item mx-2"
@@ -59,16 +61,16 @@ export const Home = () => (
             <FontAwesomeIcon icon={["fab", "github"]} />
           </a>
           <a
-            href="https://www.linkedin.com/in/manavm1990/"
+            href="https://dev.to/ldrmuse"
             target="_blank"
             rel="noopener noreferrer"
             className="level-item mx-2"
           >
-            <FontAwesomeIcon icon={["fab", "linkedin"]} />
+            <FontAwesomeIcon icon="comment-dots" />
           </a>
           <a
             className="level-item mx-2"
-            href="https://twitter.com/GoCodeFinity"
+            href="https://twitter.com/MelissaHeying"
             target="_blank"
             rel="noopener noreferrer"
           >
