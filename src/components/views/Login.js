@@ -1,4 +1,5 @@
 import React from "react"
+import * as Yup from 'yup'
 
 import { useFormik } from "formik"
 
@@ -6,21 +7,21 @@ export const Login = () => {
   const validate = (values) => {
     const errors = {}
 
-    if (!values.name) {
-      errors.name = "Name is required!"
-    }
-    if (!values.email) {
-      errors.email = "Email is required!"
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-    ) {
-      errors.email = "Doesn't look like email"
-    }
-    if (!values.pass) {
-      errors.pass = "Password is required!"
-    }
+  //   if (!values.name) {
+  //     errors.name = "Name is required!"
+  //   }
+  //   if (!values.email) {
+  //     errors.email = "Email is required!"
+  //   } else if (
+  //     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+  //   ) {
+  //     errors.email = "Doesn't look like email"
+  //   }
+  //   if (!values.pass) {
+  //     errors.pass = "Password is required!"
+  //   }
 
-    return errors
+  //   return errors
   }
 
   const formik = useFormik({
@@ -28,9 +29,13 @@ export const Login = () => {
     initialValues: {
       email: "",
       name: "",
-      pass: "",
+      password: "",
     },
-    validate,
+    validationSchema: Yup.object({
+      name: Yup.string().required('Name is required'),
+      email: Yup.string().email('invalid email').required('Email is required'),
+      password: Yup.string().min(6).required('Password is required'),
+    }),
     onSubmit: (values) => {
       // This is like utility fxn. that gathers all values
       console.log("submission", values)
@@ -65,17 +70,17 @@ export const Login = () => {
         <p>{formik.errors.email}</p>
       ) : null}
 
-      <label htmlFor="pass">Password</label>
+      <label htmlFor="password">Password</label>
       <input
         type="password"
         id="pass"
-        name="pass"
+        name="password"
         onBlur={formik.handleBlur}
         onChange={formik.handleChange}
         value={formik.values.pass}
       />
-      {formik.touched.password && formik.errors.pass ? (
-        <p>{formik.errors.pass}</p>
+      {formik.touched.password && formik.errors.password ? (
+        <p>{formik.errors.password}</p>
       ) : null}
 
       <button type="submit">Submit</button>
