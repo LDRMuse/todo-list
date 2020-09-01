@@ -5,10 +5,11 @@ import { Formik, Field, Form, ErrorMessage } from "formik"
 
 import {useLocation} from "react-router-dom"
 
+import {Options} from './Options'
+
 export const Login = () => {
 const location = useLocation();
 const [loginMode, setLoginMode] = useState(location.search.includes("login"))
-
 
   return (
     <section className='has-text-centered mt-6'>
@@ -67,6 +68,7 @@ const [loginMode, setLoginMode] = useState(location.search.includes("login"))
           <button className="button is-primary" type="submit">Submit</button>
         </Form>
       </Formik>
+      <Options />
     </section>
   )
 }
