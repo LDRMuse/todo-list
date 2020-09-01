@@ -7,9 +7,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export const Options = () => {
+export const Options = ({loginMode}) => {
 
-  return (
-    <p>!!!!!!options</p>
+  return (<button className='button'>
+    {loginMode ? "Create An Account?" : "Already Have An Account?"}
+  </button>
   )
+
 }
+
+Options.propTypes = {
+  loginMode: PropTypes.bool,
+}
+
+Options.defaultProps = { loginMode: false}

@@ -68,7 +68,7 @@ const [loginMode, setLoginMode] = useState(location.search.includes("login"))
           <button className="button is-primary" type="submit">Submit</button>
         </Form>
       </Formik>
-      <Options />
+      <Options loginMode={loginMode}/>
     </section>
   )
 }
