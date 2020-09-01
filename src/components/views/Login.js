@@ -1,9 +1,18 @@
-import React from "react"
+import React, {useState} from "react"
 import * as Yup from 'yup'
 
 import { Formik, Field, Form, ErrorMessage } from "formik"
 
+import {useLocation} from "react-router-dom"
+
 export const Login = () => {
+const location = useLocation();
+console.log(location);
+const [loginMode, setLoginMode] = useState(location.search.includes("login"))
+
+
+
+
   return (
     <section className='has-text-centered mt-6'>
       <h1 className='title'>Login</h1>

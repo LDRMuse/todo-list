@@ -22,12 +22,12 @@ export const App = () => {
         <Route exact path="/todolist">
           <TodoList />
         </Route>
-      </Switch>
+
 
       <Route>
-        <Header />
         <Four04 />
       </Route>
+      </Switch>
       <Footer />
     </Router>
 
