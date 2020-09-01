@@ -7,10 +7,7 @@ import {useLocation} from "react-router-dom"
 
 export const Login = () => {
 const location = useLocation();
-console.log(location);
 const [loginMode, setLoginMode] = useState(location.search.includes("login"))
-
-
 
 
   return (
@@ -34,6 +31,7 @@ const [loginMode, setLoginMode] = useState(location.search.includes("login"))
       >
 
         <Form className='has-text-centered mt-6'>
+        {loginMode ? (
           <div className='field'>
             <label htmlFor="name">Name</label>
             <div className='control'>
@@ -43,6 +41,8 @@ const [loginMode, setLoginMode] = useState(location.search.includes("login"))
               </p>
             </div>
           </div>
+        ) : null }
+
 
           <div className='field'>
             <label htmlFor="email">Email</label>
