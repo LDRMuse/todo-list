@@ -42,9 +42,9 @@ export const Login = () => {
       >
 
         <Form className='has-text-centered mt-6'>
-          {loginMode ? (
+          {!loginMode ? (
             <div className='field'>
-              <h1 className='title'>Login</h1>
+              <h1 className='title'>Get Started</h1>
               <label htmlFor="name">Name</label>
               <div className='control'>
                 <Field className='mt-3' name="name" type="text" />
@@ -53,7 +53,7 @@ export const Login = () => {
                 </p>
               </div>
             </div>
-          ) : <h1 className='title'>Get Started</h1>}
+          ) : <h1 className='title'>Login</h1>}
 
 
           <div className='field'>
