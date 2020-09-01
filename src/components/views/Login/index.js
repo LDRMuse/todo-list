@@ -11,9 +11,13 @@ export const Login = () => {
 const location = useLocation();
 const [loginMode, setLoginMode] = useState(location.search.includes("login"))
 
+
+const handleLoginToggle = () => {
+  setLoginMode((prevLogin)=> !loginMode)
+}
+
   return (
     <section className='has-text-centered mt-6'>
-      <h1 className='title'>Login</h1>
       <Formik
         initialValues={{
           email: "",
@@ -34,6 +38,7 @@ const [loginMode, setLoginMode] = useState(location.search.includes("login"))
         <Form className='has-text-centered mt-6'>
         {loginMode ? (
           <div className='field'>
+          <h1 className='title'>Login</h1>
             <label htmlFor="name">Name</label>
             <div className='control'>
               <Field className='mt-3' name="name" type="text" />
@@ -42,7 +47,7 @@ const [loginMode, setLoginMode] = useState(location.search.includes("login"))
               </p>
             </div>
           </div>
-        ) : null }
+        ) : <h1 className='title'>Get Started</h1> }
 
 
           <div className='field'>
@@ -68,7 +73,7 @@ const [loginMode, setLoginMode] = useState(location.search.includes("login"))
           <button className="button is-primary" type="submit">Submit</button>
         </Form>
       </Formik>
-      <Options loginMode={loginMode}/>
+      <Options loginMode={loginMode} handler={handleLoginToggle}/>
     </section>
   )
 }
