@@ -1,20 +1,26 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
 import * as Yup from 'yup'
 
 import { Formik, Field, Form, ErrorMessage } from "formik"
 
-import {useLocation} from "react-router-dom"
+import { useLocation } from "react-router-dom"
 
-import {Options} from './Options'
+import { Options } from './Options'
 
 export const Login = () => {
-const location = useLocation();
-const [loginMode, setLoginMode] = useState(location.search.includes("login"))
+  const location = useLocation();
+  const [loginMode, setLoginMode] = useState(location.search.includes("login"))
+  const [forgotMode, setForgotMode] = useState(false)
 
 
-const handleLoginToggle = () => {
-  setLoginMode((prevLogin)=> !loginMode)
-}
+  const handleToggle = (event) => {
+    if (event.target.textContent.includes('Forgot')) {
+      setForgotMode((prev) => !prev)
+    } else {
+      setForgotMode(false)
+      setLoginMode((prev) => !prev)
+    }
+  }
 
   return (
     <section className='has-text-centered mt-6'>
@@ -36,18 +42,18 @@ const handleLoginToggle = () => {
       >
 
         <Form className='has-text-centered mt-6'>
-        {loginMode ? (
-          <div className='field'>
-          <h1 className='title'>Login</h1>
-            <label htmlFor="name">Name</label>
-            <div className='control'>
-              <Field className='mt-3' name="name" type="text" />
-              <p className='help is-danger'>
-                <ErrorMessage name="name" />
-              </p>
+          {loginMode ? (
+            <div className='field'>
+              <h1 className='title'>Login</h1>
+              <label htmlFor="name">Name</label>
+              <div className='control'>
+                <Field className='mt-3' name="name" type="text" />
+                <p className='help is-danger'>
+                  <ErrorMessage name="name" />
+                </p>
+              </div>
             </div>
-          </div>
-        ) : <h1 className='title'>Get Started</h1> }
+          ) : <h1 className='title'>Get Started</h1>}
 
 
           <div className='field'>
@@ -60,7 +66,7 @@ const handleLoginToggle = () => {
             </div>
           </div>
 
-          <div className='field'>
+          {!forgotMode ? <div className='field'>
             <label htmlFor="password">Password</label>
             <div className='control'>
               <Field className='mt-3' name="password" type="password" />
@@ -68,12 +74,13 @@ const handleLoginToggle = () => {
                 <ErrorMessage name="password" />
               </p>
             </div>
-          </div>
+          </div> : null}
+
 
           <button className="button is-primary" type="submit">Submit</button>
         </Form>
       </Formik>
-      <Options loginMode={loginMode} handler={handleLoginToggle}/>
+      <Options loginMode={loginMode} handler={handleToggle} forgotMode={forgotMode} />
     </section>
   )
 }
